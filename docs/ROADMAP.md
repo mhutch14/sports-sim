@@ -4,19 +4,22 @@
 flowchart LR
     P1[1 - Scrape data] --> P2[2 - SQLite database] --> P3[3 - Key stats / ratings] --> P4[4 - Sim engine] --> P5["5 - main.py to run sims"]
     style P1 fill:#9f9,stroke:#333
+    style P2 fill:#9f9,stroke:#333
 ```
 
-## Phase 1: Data ✅ in progress
+## Phase 1: Data ✅
 - [x] Baseball-Reference scraper: team + player season stats
 - [x] 40-man rosters (`--rosters`)
 - [ ] MLB Stats API client for live rosters / depth charts / transactions
-- [ ] Combine traded players' rows by `player_id`
-- [ ] Handedness (L/R) splits for hitters and pitchers
+- [x] Combine traded players' rows by `player_id` (in the database)
+- [ ] Platoon splits (stats vs LHP / RHP)
 
-## Phase 2: Database (SQLite, free and built into Python)
-- [ ] Load the scraped CSVs into `data/sportsim.db` (tables: teams, players, batting, pitching, rosters)
-- [ ] `player_id` / `team` as keys so tables join cleanly
-- [ ] One command to rebuild the database after each scrape
+## Phase 2: Database (SQLite, free and built into Python) ✅
+- [x] Load the scraped CSVs into `data/sportsim.db` (tables: teams, players, batting, pitching, rosters)
+- [x] `player_id` / `team` as keys so tables join cleanly
+- [x] One command to rebuild the database after each scrape (`python -m sportsim.mlb.db build`)
+- [x] Season totals with traded players combined (`batting_totals`, `pitching_totals`)
+- [x] Handedness (bats / throws) from Baseball-Reference name markers
 
 ## Phase 3: Which stats matter (ratings)
 - [ ] Turn season stats into per-plate-appearance outcome rates (K, BB, HBP, 1B, 2B, 3B, HR, out)

@@ -4,6 +4,7 @@ Everything in this folder except this file is git-ignored.
 
 ```
 data/
+├── sportsim.db       # SQLite database (python -m sportsim.mlb.db build)
 ├── cache/            # raw HTML pages, so re-runs don't hit Baseball-Reference again
 └── mlb/
     └── 2026/
